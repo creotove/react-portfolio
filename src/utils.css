@@ -1,0 +1,13 @@
+li{
+    text-transform: uppercase;
+}
+.bg-vector-img {
+    background-image: url('./assets/Vector.png');
+    background-repeat: repeat;
+}
+.altamas{
+    font-family: 'Passion One';
+}
+.box-shadow{
+    box-shadow: "6px 5px 0px 2px #000000";
+}
