@@ -1,47 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../utils.css";
 import pic from "../assets/pic.png";
+import ClickContext from "../context/ClickContext";
 
 const Hero = () => {
+  const { objectiveClick, skillsClick, objectiveRef, skillRef } =
+    useContext(ClickContext);
   const skills = [
     {
       name: "React",
       know: 70,
-      color: "yellow"
+      color: "yellow",
     },
     {
       name: "Node js",
       know: 75,
-      color: "cyan"
+      color: "cyan",
     },
     {
       name: "Mongo DB",
       know: 80,
-      color: "green"
+      color: "green",
     },
     {
       name: "Javascript",
       know: 90,
-      color: "orange"
+      color: "orange",
     },
   ];
-  Object.entries(skills).map((i) => console.log(i));
   return (
-    <main
-      className="bg-vector-img bg-x-gray-dark text-white"
-    >
+    <main className="bg-vector-img bg-x-gray-dark text-white">
       <div className="mx-24 pt-16 flex">
         {/* upper container (intro and pic) */}
         <div className="about w-full">
           <div className=" text-3xl">👋Hello! I am</div>
           <h1 className="altamas text-8xl text-x-yellow">Altamas Shaikh</h1>
           {/* objecttive and introduction */}
-          <p className="text-2xl">
-            An Enthusiast and highly motivated fresher seeking a challenging
-            role as a MERN developer to leverage my strong foundation in web
-            development, problem-solving skills, and passion for creating
-            responsive and interactive web applications.
-          </p>
+          <div className={`${objectiveClick ? "animate-wiggle" : ""}`}>
+            <p className={`text-2xl`} ref={objectiveRef}>
+              An
+              <span className="bg-x-cyan text-black pe-1  rounded mx-1">
+                {" "}
+                Enthusiast
+              </span>
+              and
+              <span className="bg-x-orange text-black px-1  rounded mx-1">
+                Highly Motivated
+              </span>
+              fresher seeking a challenging role as a{" "}
+              <span className="bg-x-yellow text-black px-1  rounded">
+                MERN Developer
+              </span>{" "}
+              to leverage my strong foundation in web development,
+              problem-solving skills, and passion for creating responsive and
+              interactive web applications.
+            </p>
+          </div>
           <button
             className="bg-x-cyan text-2xl rounded-full text-x-gray-dark font-bold h-14 w-48 mt-5"
             style={{
@@ -68,8 +82,12 @@ const Hero = () => {
         </div>
       </div>
       {/* lower container skills */}
-      <div className="flex justify-end mx-24">
-        <div className="flex flex-col text-left items-end ">
+      <div className="flex justify-end mx-24" ref={skillRef}>
+        <div
+          className={`flex flex-col text-left items-end ${
+            skillsClick ? "animate-wiggle" : ""
+          } `}
+        >
           {/* one skill slot */}
           {skills && skills.length > 0 ? (
             skills.map((skill, i) => (

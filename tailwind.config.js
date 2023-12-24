@@ -2,7 +2,25 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        x: "5px 5px 0px 2px rgba(0, 0, 0)",
+      },
+      animation: {
+        wiggle: "wiggle 2s ease-in-out",
+      },
+      keyframes: {
+        wiggle: {
+          "10%,50%,90%": {
+            opacity: 0.3,
+          },
+          "0%,40%,80%": {
+            opacity: 1,
+          },
+        },
+        "100%": { backgroundColor: "transparent", opacity: 1 },
+      },
+    },
     colors: {
       "x-green": "#99D0AF",
       "x-orange": "#FF8618",
@@ -12,13 +30,14 @@ module.exports = {
       "x-smoke": "#D9D9D9",
       "x-gray-dark": "#3B3B3B",
       "x-gray-dark-v2": "#535353",
-      "white" : "#fff",
-      "black" : "#000"
+      white: "#fff",
+      black: "#000",
     },
     // textColor: {
     //   "x-gray-dark": "#3B3B3B",
     //   "x-white": "#fff",
     // },
+
     fontFamily: {
       sans: ["Poppins", "sans-serif"],
     },

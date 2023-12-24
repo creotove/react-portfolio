@@ -1,8 +1,10 @@
-import React from "react";
-import mapImg from "../assets/map.png";
-import phoneImg from "../assets/phone.png";
-import degreeImg from "../assets/degree.png";
+import React, { useContext } from "react";
+import mapImg from "../assets/icons/map.png";
+import phoneImg from "../assets/icons/phone.png";
+import degreeImg from "../assets/icons/degree.png";
+import ClickContext from "../context/ClickContext";
 const Footer = () => {
+  const { educationRef,educationClick } = useContext(ClickContext);
   const educations = [
     {
       name: "MCA (pursuing)",
@@ -61,10 +63,11 @@ const Footer = () => {
       </div>
       {/* right-side Education details*/}
       <div
-        className="left-side bg-x-orange w-2/3 h-full"
+        className={`left-side bg-x-orange w-2/3 h-full ${educationClick ? "animate-wiggle" : ""}`}
         style={{
           borderRadius: "50px 0 0 50px",
         }}
+        ref={educationRef}
       >
         <div className="mt-5 w-full flex flex-col items-center">
           <p
@@ -78,27 +81,33 @@ const Footer = () => {
         </div>
         <div className="ms-12">
           {/* degree one slot */}
-          {
-            educations && educations.length > 0 ? educations.map((education,i)=>(
-              <div className="flex mt-10 items-center font-medium text-white w-full  whitespace-nowrap" key={i+1}>
-            <img src={degreeImg} className=" h-9 object-contain" alt="" />
-            <div className="flex flex-col w-full">
-              <p className="ms-10 text-x-orange-shade">{education.name}</p>
-              <div className="flex justify-between">
-                <p className="ms-10">{education.from}</p>
-                <div
-                  className="w-full h-3 mx-3"
-                  style={{
-                    borderBottom: `1px dashed white`,
-                  }}
-                ></div>
-                <p className="me-10">{education.marks}</p>
+          {educations && educations.length > 0 ? (
+            educations.map((education, i) => (
+              <div
+                className="flex mt-10 items-center font-medium text-white w-full  whitespace-nowrap"
+                key={i + 1}
+              >
+                <img src={degreeImg} className=" h-9 object-contain" alt="" />
+                <div className="flex flex-col w-full">
+                  <p className="ms-10 text-x-orange-shade">{education.name}</p>
+                  <div className="flex justify-between">
+                    <p className="ms-10">{education.from}</p>
+                    <div
+                      className="w-full h-3 mx-3"
+                      style={{
+                        borderBottom: `1px dashed white`,
+                      }}
+                    ></div>
+                    <p className="me-10">{education.marks}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-            )) : <p className="text-white font-3xl">Failed to load the education dedtails</p>
-          }
-       
+            ))
+          ) : (
+            <p className="text-white font-3xl">
+              Failed to load the education dedtails
+            </p>
+          )}
         </div>
       </div>
     </div>
