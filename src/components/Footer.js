@@ -23,10 +23,10 @@ const Footer = () => {
     },
   ];
   return (
-    <div className=" bg-x-gray-dark-v2 h-96 flex gap-8 font-medium">
+    <div className=" bg-x-gray-dark-v2 h-full md:h-96 flex flex-col md:flex-row gap-8 font-medium">
       {/* left-side Contact details*/}
       <div
-        className="bg-x-green w-1/3 h-full flex justify-center"
+        className="bg-x-green w-full md:w-1/3 h-96 flex justify-center items-center md:items-start"
         style={{
           borderRadius: "0px 50px 50px 0",
         }}
@@ -63,7 +63,7 @@ const Footer = () => {
       </div>
       {/* right-side Education details*/}
       <div
-        className={`left-side bg-x-orange w-2/3 h-full ${educationClick ? "animate-wiggle" : ""}`}
+        className={`right-side bg-x-orange w-full md:w-2/3 py-10 md:py-0 h-full ${educationClick ? "animate-wiggle" : ""}`}
         style={{
           borderRadius: "50px 0 0 50px",
         }}
@@ -84,21 +84,21 @@ const Footer = () => {
           {educations && educations.length > 0 ? (
             educations.map((education, i) => (
               <div
-                className="flex mt-10 items-center font-medium text-white w-full  whitespace-nowrap"
+                className="flex md:mt-10 mt-5 items-center font-medium text-white w-full  md:whitespace-nowrap"
                 key={i + 1}
               >
-                <img src={degreeImg} className=" h-9 object-contain" alt="" />
-                <div className="flex flex-col w-full">
+                <img src={degreeImg} className="h-7 md:h-9 object-contain" alt="" />
+                <div className="md:flex md:flex-col w-full">
                   <p className="ms-10 text-x-orange-shade">{education.name}</p>
                   <div className="flex justify-between">
                     <p className="ms-10">{education.from}</p>
                     <div
-                      className="w-full h-3 mx-3"
+                      className="w-full h-3 mx-3 hidden md:block"
                       style={{
                         borderBottom: `1px dashed white`,
                       }}
                     ></div>
-                    <p className="me-10">{education.marks}</p>
+                    <p className="me-10 underline md:no-underline">{education.marks}</p>
                   </div>
                 </div>
               </div>

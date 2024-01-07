@@ -7,7 +7,7 @@ module.exports = {
         x: "5px 5px 0px 2px rgba(0, 0, 0)",
       },
       animation: {
-        wiggle: "wiggle 2s ease-in-out",
+        wiggle: "wiggle 1s ease-in-out",
       },
       keyframes: {
         wiggle: {

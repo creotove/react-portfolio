@@ -11,8 +11,8 @@ const Header = () => {
     educationRef,
   } = useContext(ClickContext);
   return (
-    <header className="mx-24 flex my-5 justify-between">
-      <div className="leftslot flex w-full">
+    <header className="md:mx-24 mx-5 flex my-5 justify-between">
+      <div className="flex w-full ">
         <div
           className="profileslot px-6 py-6 bg-x-cyan rounded-full me-3"
           style={{
@@ -27,8 +27,16 @@ const Header = () => {
         >
           Portfolio
         </div>
+        <div
+          className=" bg-x-orange md:hidden rounded-full  p-2 px-6 font-semibold flex justify-center items-center ms-auto"
+          style={{
+            boxShadow: "6px 5px 0px 2px #000000",
+          }}
+        >
+          2024
+        </div>
       </div>
-      <div className="navlinksslot w-full">
+      <div className="md:w-full md:block hidden">
         <nav>
           <ul className="flex justify-between">
             <li

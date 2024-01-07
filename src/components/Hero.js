@@ -30,25 +30,28 @@ const Hero = () => {
   ];
   return (
     <main className="bg-vector-img bg-x-gray-dark text-white">
-      <div className="mx-24 pt-16 flex">
+      <div className="md:mx-24 mx-5 pt-16 flex md:flex-row flex-col-reverse items-center justify-center">
         {/* upper container (intro and pic) */}
-        <div className="about w-full">
-          <div className=" text-3xl">👋Hello! I am</div>
-          <h1 className="altamas text-8xl text-x-yellow">Altamas Shaikh</h1>
+        <div className="about w-full text-center md:text-left">
+          <div className="text-2xl  mt-3 md:mt-0 md:text-3xl ">
+            👋Hello! I am
+          </div>
+          <h1 className="altamas text-6xl md:text-8xl text-x-yellow whitespace-nowrap">
+            Altamas Shaikh
+          </h1>
           {/* objecttive and introduction */}
           <div className={`${objectiveClick ? "animate-wiggle" : ""}`}>
-            <p className={`text-2xl`} ref={objectiveRef}>
+            <p className="md:text-2xl  text-xl " ref={objectiveRef}>
               An
               <span className="bg-x-cyan text-black pe-1  rounded mx-1">
-                {" "}
                 Enthusiast
-              </span>
+              </span>{" "}
               and
-              <span className="bg-x-orange text-black px-1  rounded mx-1">
+              <span className="bg-x-orange text-black px-1  rounded mx-1 whitespace-nowrap">
                 Highly Motivated
-              </span>
+              </span>{" "}
               fresher seeking a challenging role as a{" "}
-              <span className="bg-x-yellow text-black px-1  rounded">
+              <span className="bg-x-yellow text-black px-1 rounded whitespace-nowrap">
                 MERN Developer
               </span>{" "}
               to leverage my strong foundation in web development,
@@ -66,7 +69,7 @@ const Hero = () => {
           </button>
         </div>
         {/* pic slot */}
-        <div className="w-full flex justify-end mt-10">
+        <div className="w-full flex justify-center md:justify-end mt-10">
           <div
             className="bg-x-yellow h-72 w-72 rounded-[50px] relative"
             style={{
@@ -82,7 +85,7 @@ const Hero = () => {
         </div>
       </div>
       {/* lower container skills */}
-      <div className="flex justify-end mx-24" ref={skillRef}>
+      <div className="flex md:justify-end justify-center py-10 mx-3 md:py-0 md:mx-24" ref={skillRef}>
         <div
           className={`flex flex-col text-left items-end ${
             skillsClick ? "animate-wiggle" : ""
@@ -95,10 +98,10 @@ const Hero = () => {
                 className="flex justify-center items-center mb-3 "
                 key={i + 1}
               >
-                <p className="skillName me-3 text-left">{skill.name}</p>
-                <div className="skillKnow bg-x-gray-dark-v2 rounded-full w-72 h-3">
+                <p className="me-3 text-left">{skill.name}</p>
+                <div className="bg-x-gray-dark-v2 rounded-full w-64 md:w-72 h-3">
                   <div
-                    className={`skillKnow bg-x-${skill.color} rounded-full h-3`}
+                    className={`bg-x-${skill.color} rounded-full h-3`}
                     style={{
                       width: `${skill.know}%`,
                     }}

@@ -7,6 +7,7 @@ import javaSticker from "../assets/stickers/javaSticker.svg";
 import gMail from "../assets/socials/gMail.svg";
 import insta from "../assets/socials/insta.svg";
 import linkedIn from "../assets/socials/linkedIn.svg";
+import "../utils.css";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -68,10 +69,11 @@ const Projects = () => {
   ];
   return (
     <>
-      <div className="relative bg-x-orange w-full">
-        <div className="absolute top-64 -left-32">
-          <div className="rotate-[270deg]">
-            <div className="flex flex-row-reverse gap-x-6">
+      {/* Social Links */}
+      <div className="md:relative w-full md:mx-0">
+        <div className="md:absolute md:top-64 md:-left-32">
+          <div className="md:rotate-[270deg]">
+            <div className="md:flex flex gap-x-2 justify-center flex-row-reverse py-5 md:py-0 bg-white/70 md:bg-white/0 items-center md:flex-row-reverse md:gap-x-6">
               <a href="mailto:shaikhaltamash411@gmail.com">
                 <img
                   src={gMail}
@@ -120,16 +122,24 @@ const Projects = () => {
           Projects
         </p>
       </div>
+
       {/* card */}
-      <div className="mx-24 mb-16">
+      <div className="md:mx-24 mx-7 mb-16">
         <div className="">
           <Slider {...settings}>
             {projects && projects.length > 0
               ? projects.map((project, idx) => (
                   <div
-                    className="w-[350px] h-[350px] rounded-[50px] bg-white shadow-x my-4"
+                    className="w-96 h-96 md:w-[350px] md:h-[350px] rounded-[50px] bg-white shadow-x my-4"
                     key={idx}
                   >
+                    <div className="relative">
+                      <img
+                        className="absolute  -left-5 -top-3 h-20"
+                        src={project.technologySticker}
+                        alt=""
+                      />
+                    </div>
                     <div
                       className={`bg-x-${project.bgColor} m-6 h-3/4 rounded-[40px] flex justify-center items-center`}
                     >
@@ -144,7 +154,6 @@ const Projects = () => {
           </Slider>
         </div>
       </div>
-      {/* Social Links */}
     </>
   );
 };
