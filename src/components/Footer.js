@@ -4,12 +4,12 @@ import phoneImg from "../assets/icons/phone.png";
 import degreeImg from "../assets/icons/degree.png";
 import ClickContext from "../context/ClickContext";
 const Footer = () => {
-  const { educationRef,educationClick } = useContext(ClickContext);
+  const { educationRef, educationClick } = useContext(ClickContext);
   const educations = [
     {
-      name: "MCA (pursuing)",
-      from: "R. B. Institute of Management (sem-2)",
-      marks: "7.91(SPI)",
+      name: "MCA",
+      from: "R. B. Institute of Management Studies",
+      marks: "8.49(CPI) ",
     },
     {
       name: "BCA",
