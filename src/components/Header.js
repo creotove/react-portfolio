@@ -3,8 +3,8 @@ import ClickContext from "../context/ClickContext";
 
 const Header = () => {
   const {
-    objectiveRef,
-    setObjectiveClick,
+    projectRef,
+    setProjectRef,
     skillRef,
     setSkillsClick,
     setEducationClick,
@@ -42,15 +42,15 @@ const Header = () => {
             <li
               className=" bg-white rounded-full cursor-pointer p-2 px-10 border flex justify-center items-center"
               onClick={() => {
-                setObjectiveClick(true);
-                objectiveRef.current.style.scrollMargin = "91px";
-                objectiveRef.current?.scrollIntoView({ behavior: "smooth" });
+                setProjectRef(true);
+                projectRef.current.style.scrollMargin = "91px";
+                projectRef.current?.scrollIntoView({ behavior: "smooth" });
                 setTimeout(() => {
-                  setObjectiveClick(false);
+                  setProjectRef(false);
                 }, 3050);
               }}
             >
-              Objective
+              Projects
             </li>
             <li
               className=" bg-white rounded-full  p-2 px-10 border flex justify-center items-center cursor-pointer"
