@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import "../utils.css";
 import pic from "../assets/pic.png";
 import ClickContext from "../context/ClickContext";
-import CustomInput from "./CustomInput";
 import Modal from "./Modal";
 import HireMeForm from "./HireMeForm";
 
@@ -31,6 +30,7 @@ const Hero = () => {
         ease: "power1.inOut",
       }
     );
+    // eslint-disable-next-line
   }, []);
 
   const swing = (target) => {
