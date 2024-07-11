@@ -25,6 +25,7 @@ module.exports = {
       "x-green": "#99D0AF",
       "x-orange": "#FF8618",
       "x-orange-shade": "#5A320E",
+      "x-red": "#FF4D4D",
       "x-yellow": "#FECD07",
       "x-cyan": "#58CCF7",
       "x-smoke": "#D9D9D9",

@@ -134,7 +134,7 @@ const Projects = () => {
                   alt="linkedIn_image"
                 />
               </a>
-              <p className="text-2xl px-3 py-2 font-semibold w-fit bg-x-cyan rounded-full text-white   border border-black">
+              <p className="text-2xl px-3 py-2 font-semibold w-fit bg-x-cyan rounded-full   border border-black">
                 Social Links
               </p>
             </div>

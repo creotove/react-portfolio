@@ -1,8 +1,11 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "../utils.css";
 import pic from "../assets/pic.png";
 import ClickContext from "../context/ClickContext";
+import CustomInput from "./CustomInput";
+import Modal from "./Modal";
+import HireMeForm from "./HireMeForm";
 
 const Hero = () => {
   const { skillsClick, skillRef } = useContext(ClickContext);
@@ -114,9 +117,95 @@ const Hero = () => {
       color: "green",
     },
   ];
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalOverlayRef = useRef(null);
+  const modalContentRef = useRef(null);
 
+  const openModal = () => {
+    const button = hireMeRef.current;
+    const modalOverlay = modalOverlayRef.current;
+    const modalContent = modalContentRef.current;
+
+    // Get button's current position
+    const rect = button.getBoundingClientRect();
+    const buttonLeft = rect.left;
+    const buttonTop = rect.top;
+
+    // Set initial position and size
+    gsap.set(modalOverlay, {
+      display: 'block',
+      left: buttonLeft,
+      top: buttonTop,
+      width: rect.width,
+      height: rect.height,
+    });
+
+    // Animate to center and full size
+    gsap.to(modalOverlay, {
+      left: '50%',
+      top: '50%',
+      xPercent: -50,
+      yPercent: -50,
+      width: '80vw',
+      height: '80vh',
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: () => {
+        gsap.to(modalContent, {
+          opacity: 1,
+          duration: 0.3,
+          height: '100%',
+          width: '100%',
+        });
+      }
+    });
+
+    setIsModalOpen(true);
+    if (typeof window != 'undefined' && window.document) {
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeModal = () => {
+    const button = hireMeRef.current;
+    const modalOverlay = modalOverlayRef.current;
+    const modalContent = modalContentRef.current;
+
+    // Get button's current position
+    const rect = button.getBoundingClientRect();
+    const buttonLeft = rect.left;
+    const buttonTop = rect.top;
+
+    // Fade out content
+    gsap.to(modalContent, {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        // Animate back to button position and size
+        gsap.to(modalOverlay, {
+          left: buttonLeft,
+          top: buttonTop,
+          xPercent: 0,
+          yPercent: 0,
+          width: rect.width,
+          height: rect.height,
+          duration: 0.5,
+          ease: "power2.inOut",
+          onComplete: () => {
+            gsap.set(modalOverlay, { display: 'none' });
+            setIsModalOpen(false);
+          }
+        });
+      }
+    });
+
+    if (typeof window != 'undefined' && window.document) {
+      document.body.style.overflow = 'auto';
+    }
+  };
   return (
-    <main className="bg-vector-img bg-x-gray-dark text-white">
+    <main className={`bg-vector-img bg-x-gray-dark text-white `}
+    >
       <div className="md:mx-24 mx-5 pt-16 flex md:flex-row flex-col-reverse items-center justify-center">
         {/* upper container (intro and pic) */}
         <div className="about w-full text-center md:text-left">
@@ -152,9 +241,15 @@ const Hero = () => {
             style={{
               boxShadow: "5px 5px 0px 5px black",
             }}
+            disabled={isModalOpen}
+            onClick={openModal}
           >
             HIRE ME
           </button>
+          {/* modal */}
+          <Modal isModalOpen={isModalOpen} closeModal={closeModal} modalOverlayRef={modalOverlayRef} modalContentRef={modalContentRef} >
+            <HireMeForm closeModal={closeModal} />
+          </Modal>
         </div>
         {/* pic slot */}
         <div className="w-full flex justify-center md:justify-end mt-10">
@@ -216,5 +311,6 @@ const SkillBar = ({ skill }) => {
     </div>
   );
 };
+
 
 export default Hero;

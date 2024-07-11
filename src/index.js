@@ -8,9 +8,9 @@ import ClickContextProvider from './context/ClickContextProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <ClickContextProvider>
-    <App />
-  </ClickContextProvider>
+    <ClickContextProvider>
+      <App />
+    </ClickContextProvider>
   </React.StrictMode>
 );
 
