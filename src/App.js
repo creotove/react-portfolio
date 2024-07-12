@@ -1,6 +1,7 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
 import Projects from "./components/Projects";
 import "./utils.css";
 
@@ -22,6 +23,7 @@ function App() {
       <Hero />
       <Projects />
       <Footer />
+      <Marquee text={'Site is Under development phase'} />
     </>
   );
 }
